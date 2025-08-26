@@ -77,8 +77,11 @@ if __name__ == "__main__":
             try:
                 val = db.db_console()
                 if val != ["Bye"]:
+                    print("*" * 10)
                     for rd in val:
                         print(rd[0])
+                        
+                    print("*" * 10)
                 else:
                     break
             except Exception as e:

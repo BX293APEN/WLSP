@@ -1,4 +1,4 @@
-import os, sqlite3, copy
+import os, sqlite3
 
 class MySQLite():
     def __init__(

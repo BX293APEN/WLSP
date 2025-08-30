@@ -66,9 +66,13 @@ class SQLiteDebug(MySQLite):
         searchWord = input("入力した平仮名が含まれる5文字の言葉を検索します > ")
         if searchWord.count("quit") > 0:
             return ["Bye"]
-        else:
-            return self.send_sql(f"""SELECT word FROM words WHERE word LIKE "%{searchWord}%";""")
-            
+        
+        notSearchWord = input("含まれない言葉 (オプション) > ")
+        sql = f"""SELECT word FROM words WHERE word LIKE "%{searchWord}%" """
+        if len(notSearchWord) != 0:
+            for s in notSearchWord:
+                sql = f"""{sql} AND word NOT LIKE "%{s}%" """
+        return self.send_sql(f"""{sql};""")
 
 
 if __name__ == "__main__":

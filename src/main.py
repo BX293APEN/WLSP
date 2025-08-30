@@ -72,7 +72,7 @@ class SQLiteDebug(MySQLite):
         if len(notSearchWord) != 0:
             for s in notSearchWord:
                 sql = f"""{sql} AND word NOT LIKE "%{s}%" """
-        return self.send_sql(f"""{sql};""")
+        return self.send_sql(f"""{sql} ORDER BY ASC;""")
 
 
 if __name__ == "__main__":
